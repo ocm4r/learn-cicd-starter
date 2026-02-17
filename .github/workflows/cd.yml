@@ -31,3 +31,6 @@ jobs:
 
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
+
+      - name: 'Build Docker image'
+        run: 'gcloud builds submit --tag us-central1-docker.pkg.dev/eco-diode-487619-r8/notely-ar-repo/notely:latest .'
