@@ -38,8 +38,10 @@ jobs:
         run: 'gcloud builds submit --tag us-central1-docker.pkg.dev/eco-diode-487619-r8/notely-ar-repo/notely:latest .'
 
       - name: Install goose
-        run: go install github.com/pressly/goose/v3/cmd/goose@latest
-
+        run: |
+          go install github.com/pressly/goose/v3/cmd/goose@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          
       - name: Run migrateup.sh
         run: ./scripts/migrateup.sh
 
