@@ -23,11 +23,14 @@ jobs:
           go mod tidy
           go mod vendor
 
-      - name: Run Unit Tests
-        run: go test ./... -cover
-
       - name: Install gosec
         run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
+      - name: Install goose
+        run: go install go install github.com/pressly/goose/v3/cmd/goose@latest
+
+      - name: Run Unit Tests
+        run: go test ./... -cover
 
       - name: Run gosec
         run: gosec ./...
